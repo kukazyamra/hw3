@@ -24,15 +24,13 @@ const CardList = () => {
     const [displayedCards, setDisplayedCards] = useState(cards)
     const [areShown, setAreShown] = useState(true)
 
+    const filterCards = (filterCallback) => {
+        setDisplayedCards(cards.filter(filterCallback));
+    }
     const changeShown = () => {
         setAreShown(!areShown);
     }
-    const displayAbove50 = () => {
-        setDisplayedCards(cards.filter(card => card.percentage >= 50));
-    }
-    const displayBelow50 = () => {
-        setDisplayedCards(cards.filter(card => card.percentage < 50));
-    }
+
     const displayAll = () => {
         setDisplayedCards(cards);
     }
@@ -40,8 +38,8 @@ const CardList = () => {
         <>
             <div className={classes.menu}>
                 <Button text={areShown ? 'Скрыть карточки' : 'Показать карточки'} onClick={changeShown}/>
-                <Button text={'Уровень знаний более 50%'} onClick={displayAbove50}/>
-                <Button text={'Уровень знаний менее 50%'} onClick={displayBelow50}/>
+                <Button text={'Уровень знаний более 50%'} onClick={() => filterCards(card => card.percentage >= 50)}/>
+                <Button text={'Уровень знаний менее 50%'} onClick={() => filterCards(card => card.percentage < 50)}/>
                 <Button text={'Любой уровень знаний'} onClick={displayAll}/>
             </div>
             {areShown && (
