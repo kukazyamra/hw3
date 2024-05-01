@@ -3,7 +3,24 @@ import Card from '../Card/Card.jsx/';
 import classes from './CardList.module.css';
 import Button from '../Button/Button.jsx';
 
-const CardList = ({cards}) => {
+const cards = [
+    {id: 1, name: 'Javascript', description: 'Мультипарадигменный язык программирования', percentage: 70},
+    {
+        id: 2,
+        name: 'React.js',
+        description: 'JavaScript-библиотека для создания пользовательских интерфейсов',
+        percentage: 20
+    },
+    {id: 3, name: 'PHP', description: 'Скриптовый язык программирования общего назначения', percentage: 60},
+    {
+        id: 4,
+        name: 'Node.js',
+        description: 'Среда выполнения JavaScript, используемая для создания масштабируемых веб-приложений',
+        percentage: 10
+    },
+    {id: 5, name: 'SQL', description: 'Язык структурированных запросов к базам данных', percentage: 55}
+]
+const CardList = () => {
     const [displayedCards, setDisplayedCards] = useState(cards)
     const [areShown, setAreShown] = useState(true)
 
